@@ -1,23 +1,46 @@
-async function loadDashboard() {
+async function loadDashboard(){
 
-    try {
+const dashboard=await fetch("http://localhost:5000/api/dashboard");
 
-        const response = await fetch("http://localhost:5000/api/dashboard");
+const info=await dashboard.json();
 
-        const data = await response.json();
+document.getElementById("employees").innerHTML=info.employees;
 
-        document.getElementById("employees").innerHTML = data.employees;
-        document.getElementById("events").innerHTML = data.events;
-        document.getElementById("locations").innerHTML = data.locations;
-        document.getElementById("departments").innerHTML = data.departments;
+document.getElementById("events").innerHTML=info.events;
 
-    }
+document.getElementById("locations").innerHTML=info.locations;
 
-    catch(error){
+document.getElementById("departments").innerHTML=info.departments;
 
-        console.log(error);
+const analytics=await fetch("http://localhost:5000/api/analytics/department");
 
-    }
+const chartData=await analytics.json();
+
+new Chart(
+
+document.getElementById("departmentChart"),
+
+{
+
+type:"bar",
+
+data:{
+
+labels:chartData.map(d=>d._id),
+
+datasets:[{
+
+label:"Activities",
+
+data:chartData.map(d=>d.count)
+
+}]
+
+}
+
+}
+
+);
 
 }
 

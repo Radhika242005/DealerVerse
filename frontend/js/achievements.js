@@ -1,67 +1,44 @@
-const user = getEmployee();
+async function loadAchievements(){
 
-const achievements = [
+    const response = await fetch("http://localhost:5000/api/leaderboard");
 
-{
-title:"🥉 Bronze Performer",
-condition:100,
-description:"Reach 100 XP"
-},
+    const employees = await response.json();
 
-{
-title:"🥈 Silver Performer",
-condition:300,
-description:"Reach 300 XP"
-},
+    const container = document.getElementById("achievementContainer");
 
-{
-title:"🥇 Gold Performer",
-condition:500,
-description:"Reach 500 XP"
-},
+    container.innerHTML = "";
 
-{
-title:"🚗 Delivery Champion",
-condition:2,
-description:"Complete 2 Deliveries",
-type:"booking"
-}
+    employees.forEach(employee=>{
 
-];
+        let badge = "🥉 Bronze Seller";
 
-const container=document.getElementById("achievementContainer");
+        if(employee.totalXP >= 15000)
+            badge = "💎 Diamond Seller";
 
-achievements.forEach(a=>{
+        else if(employee.totalXP >= 10000)
+            badge = "🥇 Gold Seller";
 
-let unlocked=false;
+        else if(employee.totalXP >= 6000)
+            badge = "🥈 Silver Seller";
 
-if(a.type==="booking"){
+        container.innerHTML += `
 
-    unlocked=user.bookings>=a.condition;
+        <div class="quest-card">
 
-}
-else{
+            <h2>${employee._id}</h2>
 
-    unlocked=user.xp>=a.condition;
+            <h3>${employee.department}</h3>
+
+            <h2>${badge}</h2>
+
+            <p>Total XP : ${employee.totalXP}</p>
+
+        </div>
+
+        `;
+
+    });
 
 }
 
-container.innerHTML+=`
-
-<div class="card">
-
-<h2>${a.title}</h2>
-
-<p>${a.description}</p>
-
-<h3>
-
-${unlocked?"✅ Unlocked":"🔒 Locked"}
-
-</h3>
-
-</div>
-
-`;
-
-});
+loadAchievements();

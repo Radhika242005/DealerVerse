@@ -1,66 +1,106 @@
-const quests = [
+async function loadQuests(){
 
-{
-title:"Create 2 Bookings",
-reward:50,
-completed:false
-},
+    const response = await fetch("http://localhost:5000/api/quests");
 
-{
-title:"Approve Finance for 3 Bookings",
-reward:100,
-completed:false
-},
+    const data = await response.json();
 
-{
-title:"Deliver 1 Vehicle",
-reward:150,
-completed:false
-}
+    const quests = [
 
-];
+        {
 
-const container=document.getElementById("questContainer");
+            title:"🚗 Create Bookings",
 
-function loadQuests(){
+            progress:data.bookings,
 
-container.innerHTML="";
+            target:5000,
 
-quests.forEach((q,index)=>{
+            reward:100
 
-container.innerHTML+=`
+        },
 
-<div class="quest-card">
+        {
 
-<h2>${q.title}</h2>
+            title:"💰 Discount Approvals",
 
-<p>Reward : ${q.reward} XP</p>
+            progress:data.discounts,
 
-<button onclick="completeQuest(${index})">
+            target:500,
 
-${q.completed ? "Completed ✅":"Complete"}
+            reward:150
 
-</button>
+        },
 
-</div>
+        {
 
-`;
+            title:"💳 Credit Approvals",
 
-});
+            progress:data.credits,
 
-}
+            target:1000,
 
-function completeQuest(index){
+            reward:200
 
-if(!quests[index].completed){
+        }
 
-quests[index].completed=true;
+    ];
 
-alert("🏆 +" + quests[index].reward + " XP Earned!");
+    const container=document.getElementById("questContainer");
 
-loadQuests();
+    container.innerHTML="";
 
-}
+    quests.forEach(q=>{
+
+        let percent=Math.min(
+
+            (q.progress/q.target)*100,
+
+            100
+
+        );
+
+        let completed=q.progress>=q.target;
+
+        container.innerHTML+=`
+
+        <div class="quest-card">
+
+            <h2>${q.title}</h2>
+
+            <p>
+
+            ${q.progress}/${q.target}
+
+            </p>
+
+            <div class="progress">
+
+                <div
+
+                class="progress-fill"
+
+                style="width:${percent}%">
+
+                </div>
+
+            </div>
+
+            <h3>
+
+            Reward : ${q.reward} XP
+
+            </h3>
+
+            <button>
+
+            ${completed ? "✅ Completed":"🎯 In Progress"}
+
+            </button>
+
+        </div>
+
+        `;
+
+    });
 
 }
 

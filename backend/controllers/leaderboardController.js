@@ -12,8 +12,8 @@ exports.getLeaderboard = async (req, res) => {
                         $in: [
                             "BOOKING_CREATED",
                             "DISCOUNT_CREATED",
-                            "DISCOUNT_APPROVED",
                             "DISCOUNT_ESCALATED",
+                            "DISCOUNT_APPROVED",
                             "CREDIT_ADDED",
                             "CREDIT_APPROVED"
                         ]
@@ -22,33 +22,138 @@ exports.getLeaderboard = async (req, res) => {
             },
 
             {
+                $addFields: {
+
+                    xp: {
+
+                        $switch: {
+
+                            branches: [
+
+                                {
+                                    case: {
+                                        $eq: [
+                                            "$action_code",
+                                            "BOOKING_CREATED"
+                                        ]
+                                    },
+                                    then: 20
+                                },
+
+                                {
+                                    case: {
+                                        $eq: [
+                                            "$action_code",
+                                            "DISCOUNT_CREATED"
+                                        ]
+                                    },
+                                    then: 15
+                                },
+
+                                {
+                                    case: {
+                                        $eq: [
+                                            "$action_code",
+                                            "DISCOUNT_ESCALATED"
+                                        ]
+                                    },
+                                    then: 20
+                                },
+
+                                {
+                                    case: {
+                                        $eq: [
+                                            "$action_code",
+                                            "DISCOUNT_APPROVED"
+                                        ]
+                                    },
+                                    then: 30
+                                },
+
+                                {
+                                    case: {
+                                        $eq: [
+                                            "$action_code",
+                                            "CREDIT_ADDED"
+                                        ]
+                                    },
+                                    then: 25
+                                },
+
+                                {
+                                    case: {
+                                        $eq: [
+                                            "$action_code",
+                                            "CREDIT_APPROVED"
+                                        ]
+                                    },
+                                    then: 40
+                                }
+
+                            ],
+
+                            default: 0
+
+                        }
+
+                    }
+
+                }
+
+            },
+
+            {
+
                 $group: {
+
                     _id: "$username",
-                    department: { $first: "$department" },
-                    totalActions: { $sum: 1 }
+
+                    department: {
+
+                        $first: "$department"
+
+                    },
+
+                    totalXP: {
+
+                        $sum: "$xp"
+
+                    }
+
                 }
+
             },
 
             {
+
                 $sort: {
-                    totalActions: -1
+
+                    totalXP: -1
+
                 }
+
             },
 
             {
+
                 $limit: 10
+
             }
 
         ]);
 
         res.json(leaderboard);
 
-    } catch (error) {
+    }
+
+    catch(error){
 
         res.status(500).json({
-            message: error.message
+
+            message:error.message
+
         });
 
     }
 
-};
+}
