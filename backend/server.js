@@ -9,6 +9,7 @@ const employeeRoutes = require("./routes/employeeRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
 const eventLogRoutes = require("./routes/eventLogRoutes");
 const dashboardRoutes=require("./routes/dashboardRoutes");
+const leaderboardRoutes = require("./routes/leaderboardRoutes");
 dotenv.config();
 
 connectDB();
@@ -27,6 +28,7 @@ app.use("/api/employees", employeeRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/eventlogs", eventLogRoutes);
 app.use("/api/dashboard",dashboardRoutes);
+app.use("/api/leaderboard", leaderboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("DealerVerse Backend Running...");

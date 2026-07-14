@@ -1,49 +1,51 @@
-const players=[
+async function loadLeaderboard() {
 
-{
-name:"Rahul",
-department:"Sales",
-xp:340
-},
+    try {
 
-{
-name:"Radhika",
-department:"Finance",
-xp:300
-},
+        const response = await fetch("http://localhost:5000/api/leaderboard");
 
-{
-name:"Deepika",
-department:"Sales",
-xp:260
+        const data = await response.json();
+
+        const tbody = document.getElementById("leaderboardBody");
+
+        tbody.innerHTML = "";
+
+        data.forEach((employee, index) => {
+
+            let badge = "🥉 Bronze";
+
+            if(index === 0) badge = "🥇 Gold";
+
+            else if(index === 1) badge = "🥈 Silver";
+
+            tbody.innerHTML += `
+
+            <tr>
+
+                <td>${index+1}</td>
+
+                <td>${employee._id}</td>
+
+                <td>${employee.department}</td>
+
+                <td>${employee.totalActions}</td>
+
+                <td>${badge}</td>
+
+            </tr>
+
+            `;
+
+        });
+
+    }
+
+    catch(error){
+
+        console.log(error);
+
+    }
+
 }
 
-];
-
-const body=document.getElementById("leaderboardBody");
-
-players.sort((a,b)=>b.xp-a.xp);
-
-players.forEach((p,index)=>{
-
-let level=Math.floor(p.xp/100)+1;
-
-body.innerHTML+=`
-
-<tr>
-
-<td>${index+1}</td>
-
-<td>${p.name}</td>
-
-<td>${p.department}</td>
-
-<td>${p.xp}</td>
-
-<td>${level}</td>
-
-</tr>
-
-`;
-
-});
+loadLeaderboard();
