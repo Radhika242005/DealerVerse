@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,73 +11,89 @@
 
 <body>
 
-<div class="sidebar">
+    <div class="sidebar">
 
-    <h2>DealerVerse</h2>
+        <h2>🚗 DealerVerse</h2>
 
-    <ul>
+        <ul>
 
-        <li>🏠 Dashboard</li>
+            <li onclick="location.href='dashboard.html'">🏠 Dashboard</li>
 
-        <li>👤 Profile</li>
+            <li onclick="location.href='profile.html'">👤 Profile</li>
 
-        <li>📅 Booking</li>
+            <li onclick="location.href='booking.html'">📅 Booking</li>
 
-        <li>🏆 Leaderboard</li>
+            <li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
 
-        <li>🎯 Quests</li>
+            <li onclick="location.href='quests.html'">🎯 Quests</li>
 
-        <li>🏅 Achievements</li>
+            <li onclick="location.href='achievements.html'">🏅 Achievements</li>
 
-        <li>🚪 Logout</li>
+            <li onclick="location.href='../index.html'">🚪 Logout</li>
 
-    </ul>
+        </ul>
 
-</div>
+    </div>
 
-<div class="content">
+    <div class="content">
 
-    <h1>Welcome Radhika 👋</h1>
+        <h1>Welcome Radhika 👋</h1>
 
-    <div class="cards">
+        <p>Track your dealership performance and earn rewards.</p>
 
-        <div class="card">
+        <div class="cards">
 
-            <h3>Total Points</h3>
+            <div class="card">
+                <h3>Total XP</h3>
+                <h1 id="xp">0</h1>
+            </div>
 
-            <h1>250</h1>
+            <div class="card">
+                <h3>Level</h3>
+                <h1 id="level">1</h1>
+            </div>
+
+            <div class="card">
+                <h3>Coins</h3>
+                <h1 id="coins">0</h1>
+            </div>
+
+            <div class="card">
+                <h3>Bookings</h3>
+                <h1 id="bookings">2</h1>
+            </div>
 
         </div>
 
-        <div class="card">
+        <h2 style="margin-top:40px;">🔥 Today's Mission</h2>
 
-            <h3>Bookings</h3>
+        <div class="cards">
 
-            <h1>8</h1>
+            <div class="card">
+                <h3>Create 2 Bookings</h3>
+                <p>Reward: +50 XP</p>
+            </div>
 
-        </div>
+            <div class="card">
+                <h3>Finance Approval</h3>
+                <p>Reward: +100 XP</p>
+            </div>
 
-        <div class="card">
-
-            <h3>Achievements</h3>
-
-            <h1>12</h1>
-
-        </div>
-
-        <div class="card">
-
-            <h3>Quests</h3>
-
-            <h1>5</h1>
+            <div class="card">
+                <h3>Complete Delivery</h3>
+                <p>Reward: +150 XP</p>
+            </div>
 
         </div>
 
     </div>
 
-</div>
+    <!-- Game Engine -->
+    <script src="../js/game.js"></script>
 
-<script src="../js/dashboard.js"></script>
+    <!-- Dashboard Logic -->
+    <script src="../js/dashboard.js"></script>
 
 </body>
+
 </html>
