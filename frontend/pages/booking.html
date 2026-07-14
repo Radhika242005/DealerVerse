@@ -1,62 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bookings</title>
+
+    <title>Booking Management</title>
+
     <link rel="stylesheet" href="../css/dashboard.css">
+
 </head>
+
 <body>
 
 <div class="sidebar">
-    <h2>DealerVerse</h2>
+
+    <div class="logo">
+
+        <h2>🚗 DealerVerse</h2>
+
+        <p>Gamified Dealership</p>
+
+    </div>
 
     <ul>
+
         <li onclick="location.href='dashboard.html'">🏠 Dashboard</li>
 
-            <li onclick="location.href='profile.html'">👤 Profile</li>
+        <li onclick="location.href='profile.html'">👤 Profile</li>
 
-            <li onclick="location.href='booking.html'">📅 Booking</li>
+        <li class="active">📅 Booking</li>
 
-            <li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
+        <li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
 
-            <li onclick="location.href='quests.html'">🎯 Quests</li>
-<li onclick="location.href='department.html'">🏢 Department Battle</li>
-            <li onclick="location.href='achievements.html'">🏅 Achievements</li>
+        <li onclick="location.href='quests.html'">🎯 Quests</li>
 
-            <li onclick="location.href='../index.html'">🚪 Logout</li>
+        <li onclick="location.href='achievements.html'">🏅 Achievements</li>
+
+        <li onclick="location.href='department.html'">🏢 Department Battle</li>
+
+        <li onclick="location.href='../index.html'">🚪 Logout</li>
+
     </ul>
+
 </div>
 
 <div class="content">
 
-<h1>Booking Management</h1>
+    <div class="topbar">
 
-<table class="booking-table">
+        <div>
 
-    <thead>
+            <h1>📅 Booking Management</h1>
 
-        <thead>
-<tr>
-    <th>User ID</th>
-    <th>Employee</th>
-    <th>Department</th>
-    <th>Action</th>
-    <th>Date</th>
-    <th>Location</th>
-</tr>
-</thead>
+            <p>Monitor dealership activities in real time.</p>
 
-<tbody id="bookingBody">
+        </div>
 
-</tbody>
+    </div>
 
-</table>
+    <!-- Filters -->
+
+    <div class="filter-bar">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search Employee or Booking..."
+        >
+
+        <select id="departmentFilter">
+
+            <option value="">All Departments</option>
+
+            <option>SALES</option>
+
+            <option>ACCOUNTS</option>
+
+            <option>FINANCE</option>
+
+        </select>
+
+    </div>
+
+    <!-- Table -->
+
+    <div class="table-container">
+
+        <table class="booking-table">
+
+            <thead>
+
+            <tr>
+
+                <th>User ID</th>
+
+                <th>Employee</th>
+
+                <th>Department</th>
+
+                <th>Action</th>
+
+                <th>Date</th>
+
+                <th>Location</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="bookingBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+<div id="loader" class="loader">
+
+<div class="spinner"></div>
+
 </div>
-
-<script src="../js/game.js"></script>
-
+</div>
+<script src="../js/toast.js"></script>
 <script src="../js/booking.js"></script>
 
 </body>
+
 </html>

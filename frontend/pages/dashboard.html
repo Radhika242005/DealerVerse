@@ -2,111 +2,306 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>DealerVerse Dashboard</title>
 
     <link rel="stylesheet" href="../css/dashboard.css">
-</head>
 
+</head>
+<div class="welcome-card">
+
+<h2>
+
+🚗 Welcome Back!
+
+</h2>
+
+<p>
+
+Track dealership activities,
+
+earn XP,
+
+unlock achievements,
+
+and help your department win.
+
+</p>
+
+</div>
 <body>
+
+    <!-- ================= Sidebar ================= -->
 
     <div class="sidebar">
 
-        <h2>🚗 DealerVerse</h2>
+        <div class="logo">
+
+            <h2>🚗 DealerVerse</h2>
+
+            <p>Gamified Dealership</p>
+
+        </div>
 
         <ul>
 
-            <li onclick="location.href='dashboard.html'">🏠 Dashboard</li>
+            <li class="active" onclick="location.href='dashboard.html'">
+                🏠 <span>Dashboard</span>
+            </li>
 
-            <li onclick="location.href='profile.html'">👤 Profile</li>
+            <li onclick="location.href='profile.html'">
+                👤 <span>Profile</span>
+            </li>
 
-            <li onclick="location.href='booking.html'">📅 Booking</li>
+            <li onclick="location.href='booking.html'">
+                📅 <span>Booking</span>
+            </li>
 
-            <li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
+            <li onclick="location.href='leaderboard.html'">
+                🏆 <span>Leaderboard</span>
+            </li>
 
-            <li onclick="location.href='quests.html'">🎯 Quests</li>
-<li onclick="location.href='department.html'">🏢 Department Battle</li>
-            <li onclick="location.href='achievements.html'">🏅 Achievements</li>
+            <li onclick="location.href='quests.html'">
+                🎯 <span>Quests</span>
+            </li>
 
-            <li onclick="location.href='../index.html'">🚪 Logout</li>
+            <li onclick="location.href='department.html'">
+                🏢 <span>Department Battle</span>
+            </li>
+
+            <li onclick="location.href='achievements.html'">
+                🏅 <span>Achievements</span>
+            </li>
+
+            <li onclick="location.href='../index.html'">
+                🚪 <span>Logout</span>
+            </li>
 
         </ul>
 
     </div>
 
+    <!-- ================= Main Content ================= -->
+
     <div class="content">
 
-        <h1>Welcome Radhika 👋</h1>
+        <!-- Header -->
 
-        <p>Track your dealership performance and earn rewards.</p>
+        <div class="topbar">
+
+            <div>
+
+                <h1>Welcome, Radhika 👋</h1>
+
+                <p>Monitor dealership performance in real time.</p>
+
+            </div>
+
+            <div class="profile-box">
+
+                <div class="notification">🔔</div>
+
+                <div class="avatar">
+                    RP
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Dashboard Cards -->
 
         <div class="cards">
 
-<div class="card">
-<h3>Total Employees</h3>
-<h1 id="employees"></h1>
+            <div class="card employees">
+
+                <div class="icon">👥</div>
+
+                <div>
+
+                    <h3>Total Employees</h3>
+
+                    <h1 id="employees">0</h1>
+
+                </div>
+
+            </div>
+
+            <div class="card events">
+
+                <div class="icon">📋</div>
+
+                <div>
+
+                    <h3>Total Events</h3>
+
+                    <h1 id="events">0</h1>
+
+                </div>
+
+            </div>
+
+            <div class="card locations">
+
+                <div class="icon">📍</div>
+
+                <div>
+
+                    <h3>Locations</h3>
+
+                    <h1 id="locations">0</h1>
+
+                </div>
+
+            </div>
+
+            <div class="card departments">
+
+                <div class="icon">🏢</div>
+
+                <div>
+
+                    <h3>Departments</h3>
+
+                    <h1 id="departments">0</h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Analytics Section -->
+
+        <div class="dashboard-grid">
+
+            <!-- Chart -->
+
+            <div class="chart-card">
+
+                <h2>📊 Department Performance</h2>
+
+                <canvas id="departmentChart"></canvas>
+
+            </div>
+
+            <!-- Summary -->
+
+            <div class="summary-card">
+
+                <h2>📈 Performance Summary</h2>
+
+                <div class="summary-item">
+
+                    <h3>🏆 Top Department</h3>
+
+                    <p>Sales</p>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <h3>⭐ Overall Status</h3>
+
+                    <p>Excellent</p>
+
+                </div>
+
+                <div class="summary-item">
+
+                    <h3>🚗 Today's Activity</h3>
+
+                    <p>170K+ Events</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Quick Actions -->
+
+        <h2 class="section-title">
+
+            ⚡ Quick Actions
+
+        </h2>
+
+        <div class="quick-actions">
+
+            <div class="action-card"
+
+                onclick="location.href='leaderboard.html'">
+
+                🏆
+
+                <h3>Leaderboard</h3>
+
+            </div>
+
+            <div class="action-card"
+
+                onclick="location.href='quests.html'">
+
+                🎯
+
+                <h3>Quests</h3>
+
+            </div>
+
+            <div class="action-card"
+
+                onclick="location.href='achievements.html'">
+
+                🏅
+
+                <h3>Achievements</h3>
+
+            </div>
+
+            <div class="action-card"
+
+                onclick="location.href='department.html'">
+
+                🏢
+
+                <h3>Department Battle</h3>
+
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+
+        <footer>
+
+            <p>
+
+                🚗 DealerVerse |
+                Powered by Gamification |
+                CarVerse Hackathon 2026
+
+            </p>
+
+        </footer>
+
+    </div>
+    <div id="loader" class="loader">
+
+<div class="spinner"></div>
+
 </div>
 
-<div class="card">
-<h3>Total Events</h3>
-<h1 id="events"></h1>
-</div>
+    <!-- JS -->
 
-<div class="card">
-<h3>Locations</h3>
-<h1 id="locations"></h1>
-</div>
-
-<div class="card">
-<h3>Departments</h3>
-<h1 id="departments"></h1>
-</div>
-<div class="cards">
-
-<div class="card" onclick="location.href='leaderboard.html'">
-
-<h2>🏆 Leaderboard</h2>
-
-</div>
-
-<div class="card" onclick="location.href='quests.html'">
-
-<h2>🎯 Quests</h2>
-
-</div>
-
-<div class="card" onclick="location.href='achievements.html'">
-
-<h2>🏅 Achievements</h2>
-
-</div>
-
-<div class="card" onclick="location.href='department.html'">
-
-<h2>🏢 Department Battle</h2>
-
-</div>
-
-</div>
-</div>
-
-<div class="charts">
-
-<div class="chart-box">
-
-<h2>Department Performance</h2>
-
-<canvas id="departmentChart"></canvas>
-
-</div>
-
-</div>
-    <!-- Game Engine -->
     <script src="../js/game.js"></script>
 
-    <!-- Dashboard Logic -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="../js/dashboard.js"></script>
 
 </body>

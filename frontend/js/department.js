@@ -1,54 +1,89 @@
-const winner = data[0];
+async function loadDepartments(){
 
-container.innerHTML += `
-<div class="quest-card">
+const response=await fetch("http://localhost:5000/api/departments");
 
-<h1>🏆 Winning Department</h1>
+const data=await response.json();
+
+const container=document.getElementById("departmentContainer");
+
+container.innerHTML="";
+
+const winner=data[0];
+
+container.innerHTML+=`
+
+<div class="winner-card">
+
+<h1>🏆</h1>
 
 <h2>${winner.department}</h2>
 
-<h3>${winner.xp} XP</h3>
+<p>Winning Department</p>
+
+<div class="badge gold">
+
+${winner.xp.toLocaleString()} XP
 
 </div>
+
+</div>
+
 `;
-async function loadDepartments() {
 
-    const response = await fetch("http://localhost:5000/api/departments");
+data.forEach(dept=>{
 
-    const data = await response.json();
+let icon="🏢";
 
-    const container = document.getElementById("departmentContainer");
+if(dept.department==="SALES")
 
-    container.innerHTML = "";
+icon="🚗";
 
-    data.forEach((dept, index) => {
+else if(dept.department==="ACCOUNTS")
 
-        container.innerHTML += `
+icon="💰";
 
-        <div class="quest-card">
+else if(dept.department==="FINANCE")
 
-            let icon = "🏢";
+icon="🏦";
 
-if(dept.department === "SALES")
-    icon = "🚗";
+else if(dept.department==="EDP")
 
-if(dept.department === "ACCOUNTS")
-    icon = "💰";
+icon="💻";
 
-if(dept.department === "FINANCE")
-    icon = "🏦";
+const percent=(dept.xp/winner.xp)*100;
 
-            <h2>${icon} ${dept.department}</h2>
-            <h3>Total XP : ${dept.xp}</h3>
+container.innerHTML+=`
 
-            <progress value="${dept.xp}" max="${data[0].xp}" style="width:100%;height:25px;"></progress>
+<div class="department-card">
 
-        </div>
+<h1>${icon}</h1>
 
-        `;
+<h2>${dept.department}</h2>
 
-    });
+<p>${dept.xp.toLocaleString()} XP</p>
+
+<div class="department-progress">
+
+<div
+
+class="department-progress-fill"
+
+style="width:${percent}%">
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
 
 }
+window.onload=()=>{
 
+document.getElementById("loader").style.display="none";
+
+}
 loadDepartments();

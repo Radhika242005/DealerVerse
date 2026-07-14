@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Achievements</title>
 
 <link rel="stylesheet" href="../css/dashboard.css">
@@ -13,22 +17,31 @@
 
 <div class="sidebar">
 
-<h2>DealerVerse</h2>
+<div class="logo">
+
+<h2>🚗 DealerVerse</h2>
+
+<p>Gamified Dealership</p>
+
+</div>
 
 <ul>
 
 <li onclick="location.href='dashboard.html'">🏠 Dashboard</li>
 
-            <li onclick="location.href='profile.html'">👤 Profile</li>
+<li onclick="location.href='profile.html'">👤 Profile</li>
 
-            <li onclick="location.href='booking.html'">📅 Booking</li>
+<li onclick="location.href='booking.html'">📅 Booking</li>
 
-            <li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
-            <li onclick="location.href='quests.html'">🎯 Quests</li>
+<li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
+
+<li onclick="location.href='quests.html'">🎯 Quests</li>
+
+<li class="active">🏅 Achievements</li>
+
 <li onclick="location.href='department.html'">🏢 Department Battle</li>
-            <li onclick="location.href='achievements.html'">🏅 Achievements</li>
 
-            <li onclick="location.href='../index.html'">🚪 Logout</li>
+<li onclick="location.href='../index.html'">🚪 Logout</li>
 
 </ul>
 
@@ -36,10 +49,26 @@
 
 <div class="content">
 
+<div class="topbar">
+
+<div>
+
 <h1>🏅 Employee Achievements</h1>
 
-<div id="achievementContainer"></div>
+<p>Celebrate employee milestones and rewards.</p>
 
+</div>
+
+</div>
+
+<div id="achievementContainer" class="achievement-grid">
+
+</div>
+<div id="loader" class="loader">
+
+<div class="spinner"></div>
+
+</div>
 </div>
 
 <script src="../js/achievements.js"></script>

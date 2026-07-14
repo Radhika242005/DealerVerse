@@ -3,13 +3,13 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Leaderboard</title>
+    <title>Leaderboard</title>
 
-<link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
 
 </head>
 
@@ -17,59 +17,94 @@
 
 <div class="sidebar">
 
-<h2>DealerVerse</h2>
+    <div class="logo">
 
-<ul>
+        <h2>🚗 DealerVerse</h2>
 
-<li onclick="location.href='dashboard.html'">🏠 Dashboard</li>
+        <p>Gamified Dealership</p>
 
-            <li onclick="location.href='profile.html'">👤 Profile</li>
+    </div>
 
-            <li onclick="location.href='booking.html'">📅 Booking</li>
+    <ul>
 
-            <li onclick="location.href='leaderboard.html'">🏆 Leaderboard</li>
+        <li onclick="location.href='dashboard.html'">🏠 Dashboard</li>
 
-            <li onclick="location.href='quests.html'">🎯 Quests</li>
-<li onclick="location.href='department.html'">🏢 Department Battle</li>
-            <li onclick="location.href='achievements.html'">🏅 Achievements</li>
+        <li onclick="location.href='profile.html'">👤 Profile</li>
 
-            <li onclick="location.href='../index.html'">🚪 Logout</li>
+        <li onclick="location.href='booking.html'">📅 Booking</li>
 
-</ul>
+        <li class="active">🏆 Leaderboard</li>
+
+        <li onclick="location.href='quests.html'">🎯 Quests</li>
+
+        <li onclick="location.href='achievements.html'">🏅 Achievements</li>
+
+        <li onclick="location.href='department.html'">🏢 Department Battle</li>
+
+        <li onclick="location.href='../index.html'">🚪 Logout</li>
+
+    </ul>
 
 </div>
 
 <div class="content">
 
-<h1>🏆 Employee Leaderboard</h1>
+    <div class="topbar">
 
-<table class="booking-table">
+        <div>
 
-<thead>
+            <h1>🏆 Employee Leaderboard</h1>
 
-<tr>
+            <p>Recognizing top performers across the dealership.</p>
 
-<th>Rank</th>
+        </div>
 
-<th>Employee</th>
+    </div>
 
-<th>Department</th>
+    <!-- Top 3 Winners -->
 
-<th>Total XP</th>
+    <div class="podium" id="podium">
 
-<th>Level</th>
-<th>Badge</th>
+    </div>
 
-</tr>
+    <!-- Leaderboard Table -->
 
-</thead>
+    <div class="table-container">
 
-<tbody id="leaderboardBody">
+        <table class="booking-table">
 
-</tbody>
+            <thead>
 
-</table>
+            <tr>
 
+                <th>Rank</th>
+
+                <th>Employee</th>
+
+                <th>Department</th>
+
+                <th>XP</th>
+
+                <th>Level</th>
+
+                <th>Badge</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody id="leaderboardBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+<div id="loader" class="loader">
+
+<div class="spinner"></div>
+
+</div>
 </div>
 
 <script src="../js/leaderboard.js"></script>

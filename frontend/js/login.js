@@ -1,41 +1,65 @@
-const form = document.getElementById("loginForm");
+async function login(){
 
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+const email=document.getElementById("email").value;
 
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+const password=document.getElementById("password").value;
 
-    try {
+try{
 
-        const response = await fetch("http://127.0.0.1:5000/api/auth/login", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        email,
-        password
-    })
-});
+const response=await fetch(
 
-        console.log("Status:", response.status);
-        console.log("Response:", response);
+"http://localhost:5000/api/auth/login",
 
-        const data = await response.json();
+{
 
-        alert(data.message);
+method:"POST",
 
-        if (data.success) {
-            window.location.href = "pages/dashboard.html";
-        }
+headers:{
 
-    } catch (error) {
+"Content-Type":"application/json"
 
-        console.error("Fetch Error:", error);
+},
 
-        alert(error.message);
+body:JSON.stringify({
 
-    }
+email,
 
-});
+password
+
+})
+
+}
+
+);
+
+const data=await response.json();
+
+if(response.ok){
+
+localStorage.setItem("employee",
+
+JSON.stringify(data));
+
+window.location.href="pages/dashboard.html";
+
+}
+
+else{
+
+document.getElementById("error").innerHTML=data.message;
+
+}
+
+}
+
+catch{
+
+document.getElementById("error").innerHTML="Server Error";
+
+}
+window.onload=()=>{
+
+document.getElementById("loader").style.display="none";
+
+}
+}

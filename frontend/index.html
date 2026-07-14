@@ -1,40 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DealerVerse Login</title>
-    <link rel="stylesheet" href="css/login.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0">
+
+<title>DealerVerse Login</title>
+
+<link rel="stylesheet"
+href="css/login.css">
+
 </head>
+
 <body>
 
-<div class="login-container">
-    <h1>DealerVerse</h1>
+<div class="container">
 
-    <form id="loginForm">
-        <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            required
-        >
+<div class="left">
 
-        <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
-        >
+<h1>🚗 DealerVerse</h1>
 
-        <button type="submit">
-            Login
-        </button>
-    </form>
+<h2>
 
-    <p id="message"></p>
+Gamifying Dealership Operations
+
+</h2>
+
+<p>
+
+Reward employees.
+
+Increase productivity.
+
+Track dealership performance.
+
+</p>
+
+<img src="https://cdn-icons-png.flaticon.com/512/744/744465.png">
+
+</div>
+
+<div class="right">
+
+<div class="login-card">
+
+<h2>
+
+Employee Login
+
+</h2>
+
+<input
+
+type="email"
+
+id="email"
+
+placeholder="Email"
+
+>
+
+<input
+
+type="password"
+
+id="password"
+
+placeholder="Password"
+
+>
+
+<button onclick="login()">
+
+LOGIN
+
+</button>
+
+<p id="error"></p>
+
+</div>
+
+</div>
+
 </div>
 
 <script src="js/login.js"></script>
 
 </body>
+
 </html>

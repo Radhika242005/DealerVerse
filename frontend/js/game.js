@@ -47,3 +47,8 @@ function addXP(points) {
     saveEmployee();
 
 }
+window.onload=()=>{
+
+document.getElementById("loader").style.display="none";
+
+}
