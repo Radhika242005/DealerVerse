@@ -1,6 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
+const cors = require("cors");
 const connectDB = require("./config/db");
+
+// Import Routes
+const authRoutes = require("./routes/authRoutes");
 
 dotenv.config();
 
@@ -8,7 +12,14 @@ connectDB();
 
 const app = express();
 
+// Enable CORS
+app.use(cors());
+
+// Middleware
 app.use(express.json());
+
+// Routes
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("DealerVerse Backend Running...");
