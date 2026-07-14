@@ -12,6 +12,11 @@ const employeeSchema = new mongoose.Schema({
         required:true
     },
 
+    role:{
+        type:String,
+        default:"Sales Executive"
+    },
+
     xp:{
         type:Number,
         default:0

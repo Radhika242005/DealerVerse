@@ -7,6 +7,8 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const eventLogRoutes = require("./routes/eventLogRoutes");
+const dashboardRoutes=require("./routes/dashboardRoutes");
 dotenv.config();
 
 connectDB();
@@ -23,6 +25,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/bookings", bookingRoutes);
+app.use("/api/eventlogs", eventLogRoutes);
+app.use("/api/dashboard",dashboardRoutes);
 
 app.get("/", (req, res) => {
   res.send("DealerVerse Backend Running...");

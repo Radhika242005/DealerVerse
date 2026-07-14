@@ -18,3 +18,30 @@ exports.getBookings = async (req, res) => {
     }
 
 };
+
+// Update booking
+exports.updateBooking = async (req, res) => {
+
+    try {
+
+        const booking = await Booking.findByIdAndUpdate(
+
+            req.params.id,
+
+            req.body,
+
+            { new: true }
+
+        );
+
+        res.json(booking);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: error.message
+        });
+
+    }
+
+};
