@@ -448,14 +448,6 @@ Analytics
 
 ---
 
-# 👩‍💻 Team
-
-DealerVerse Development Team
-
-- Radhika P A
-- (Add your teammates here)
-
----
 
 # 📄 License
 
